@@ -65,7 +65,6 @@ public class Show {
 
     public void changeActor(String oldActorSurname, Actor newActor) {
         int index = searchActorBySurname(oldActorSurname);
-        Actor oldActor = listOfActors.get(index);
         if (index < 0) {
             System.out.println("Замена невозможна, актер c такой фамилией не участвует в спектакле '" + getTitle() + "'.");
             return;
@@ -73,6 +72,7 @@ public class Show {
             System.out.println("Замена невозможна, актер, которого вы хотите задействовать, в спектакле уже в нем играет");
             return;
         }
+        Actor oldActor = listOfActors.get(index);
         listOfActors.set(index, newActor);
         System.out.println("Актер " + oldActor + " заменен на актера " + newActor.toString() + " в спектакле '" + getTitle() + "'.");
     }

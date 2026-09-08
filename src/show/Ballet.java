@@ -2,8 +2,6 @@ package show;
 
 import person.*;
 
-import java.util.ArrayList;
-
 public class Ballet extends MusicalShow {
     private Choreographer choreographer;
 
