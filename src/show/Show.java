@@ -15,7 +15,9 @@ public class Show {
         this.title = title;
         this.duration = duration;
         this.director = director;
-        this.listOfActors = listOfActors;
+        director.addShow();
+        listOfActors = new ArrayList<>();
+        System.out.println("Создан спектакль '" + getTitle() + "'.");
     }
 
     public String getTitle() {
@@ -35,31 +37,44 @@ public class Show {
     }
 
     public void printActors() {
-        System.out.println("Актеры, участвующие в шоу:");
-        for(Actor actor : listOfActors) {
+        System.out.println("Список актеров спектакля '" + getTitle() + "':");
+        for (Actor actor : listOfActors) {
             System.out.println(actor.toString());
         }
     }
 
-    public void addActor(Actor newActor){
-        for(Actor actor : getListOfActors()) {
-            if(actor.equals(newActor)){
-                System.out.println("Добавление невозможно, этот актер уже задействован в этом спектакле.");
+    public void addActor(Actor newActor) {
+        for (Actor actor : getListOfActors()) {
+            if (actor.equals(newActor)) {
+                System.out.println("Добавление невозможно, этот актер уже задействован в спектакле '" + getTitle() + "'.");
                 return;
             }
         }
         listOfActors.add(newActor);
-        System.out.println("Актер " + newActor.toString() + " добавлен в труппу спектакля " + getTitle());
+        System.out.println("Актер " + newActor.toString() + " добавлен в труппу спектакля '" + getTitle() + "'.");
     }
 
-    public void changeActor(Actor oldActor, Actor newActor){
-        if(listOfActors.contains(oldActor) && !listOfActors.contains(newActor)) {
-            listOfActors.set(listOfActors.indexOf(oldActor), newActor);
-        } else if (!listOfActors.contains(oldActor)){
-            System.out.println("Замена невозможна, актер, которого вы хотите заменить не участвует в спектакле");
-        } else if (listOfActors.contains(newActor)){
-            System.out.println("Замена невозможна, актер, которого вы хотите задействовать, в спектакле уже в нем играет");
+    public int searchActorBySurname(String surname) {
+        for (Actor actor : listOfActors) {
+            if (actor.getSurname().equalsIgnoreCase(surname)) {
+                return listOfActors.indexOf(actor);
+            }
         }
+        return -1;
+    }
 
+    public void changeActor(String oldActorSurname, Actor newActor) {
+        int index = searchActorBySurname(oldActorSurname);
+        Actor oldActor = listOfActors.get(index);
+        if (index < 0) {
+            System.out.println("Замена невозможна, актер c такой фамилией не участвует в спектакле '" + getTitle() + "'.");
+            return;
+        } else if (listOfActors.contains(newActor)) {
+            System.out.println("Замена невозможна, актер, которого вы хотите задействовать, в спектакле уже в нем играет");
+            return;
+        }
+        listOfActors.set(index, newActor);
+        System.out.println("Актер " + oldActor + " заменен на актера " + newActor.toString() + " в спектакле '" + getTitle() + "'.");
     }
 }
+

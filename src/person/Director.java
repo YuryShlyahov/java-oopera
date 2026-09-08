@@ -12,4 +12,8 @@ public class Director extends Person {
     public String toString() {
         return "Режиссер: " + super.toString();
     }
+
+    public void addShow(){
+        numberOfShows++;
+    }
 }
