@@ -5,9 +5,9 @@ import show.Show;
 
 public class Theatre {
     public static void main(String[] args) {
-        Actor loban = new Actor("Антон", "Лобан", Gender.MALE, 1.80);
-        Actor falko = new Actor("Алексей", "Фалько", Gender.MALE, 1.78);
-        Actor churakova = new Actor("Юлия", "Чуракова", Gender.FEMALE, 1.65);
+        Actor loban = new Actor("Антон", "Лобан", Gender.MALE, 180);
+        Actor falko = new Actor("Алексей", "Фалько", Gender.MALE, 178);
+        Actor churakova = new Actor("Юлия", "Чуракова", Gender.FEMALE, 165);
         Director mironov = new Director("Михаил", "Миронов", Gender.MALE);
         Director kaluzhanov = new Director("Сергей", "Калужанов", Gender.MALE);
         MusicAuthor fomenko = new MusicAuthor("Николай", "Фоменко", Gender.MALE);

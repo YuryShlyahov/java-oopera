@@ -3,9 +3,9 @@ package person;
 import java.util.Objects;
 
 public class Actor extends Person {
-    private double height;
+    private int height;
 
-    public Actor(String name, String surname, Gender gender, double height) {
+    public Actor(String name, String surname, Gender gender, int height) {
         super(name, surname, gender);
         this.height = height;
     }
@@ -24,7 +24,7 @@ public class Actor extends Person {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Actor actor = (Actor) o;
-        return Double.compare(height, actor.height) == 0;
+        return Integer.compare(height, actor.height) == 0;
     }
 
     @Override
